@@ -1,0 +1,966 @@
+{
+  "status": "success",
+  "trained_at": "2026-11-10 16:38:42 UTC",
+  "dataset_records": 21600,
+  "train_samples": 17280,
+  "test_samples": 4320,
+  "features": [
+    "location_id",
+    "weather_condition",
+    "day_of_week",
+    "hour",
+    "minute",
+    "temperature_c",
+    "is_weekend",
+    "is_holiday",
+    "is_peak_hour",
+    "nearby_event"
+  ],
+  "transformed_features": [
+    "location_id_LOC002",
+    "location_id_LOC003",
+    "location_id_LOC004",
+    "location_id_LOC005",
+    "weather_condition_Cloudy",
+    "weather_condition_Overcast",
+    "weather_condition_Rainy",
+    "weather_condition_Sunny",
+    "day_of_week",
+    "hour",
+    "minute",
+    "temperature_c",
+    "is_weekend",
+    "is_holiday",
+    "is_peak_hour",
+    "nearby_event"
+  ],
+  "target": "occupied_spaces",
+  "best_model_name": "Random Forest",
+  "models": {
+    "Linear Regression": {
+      "mae": 56.6027,
+      "rmse": 76.0045,
+      "r2_score": 0.7507,
+      "mape": 172.93,
+      "training_time_seconds": 0.0083,
+      "filename": "linear_regression.joblib",
+      "description": "Standard Linear Regression trained on 17280 historical parking records."
+    },
+    "Decision Tree": {
+      "mae": 18.9085,
+      "rmse": 26.5434,
+      "r2_score": 0.9696,
+      "mape": 47.72,
+      "training_time_seconds": 0.0404,
+      "filename": "decision_tree.joblib",
+      "description": "Standard Decision Tree trained on 17280 historical parking records."
+    },
+    "Random Forest": {
+      "mae": 18.3413,
+      "rmse": 25.1481,
+      "r2_score": 0.9727,
+      "mape": 47.22,
+      "training_time_seconds": 0.4158,
+      "filename": "random_forest.joblib",
+      "description": "Standard Random Forest trained on 17280 historical parking records."
+    }
+  },
+  "feature_importances": {
+    "Random Forest": [
+      {
+        "feature": "location_id_LOC004",
+        "importance": 0.4902
+      },
+      {
+        "feature": "hour",
+        "importance": 0.1745
+      },
+      {
+        "feature": "location_id_LOC003",
+        "importance": 0.1254
+      },
+      {
+        "feature": "day_of_week",
+        "importance": 0.059
+      },
+      {
+        "feature": "is_weekend",
+        "importance": 0.0533
+      },
+      {
+        "feature": "is_peak_hour",
+        "importance": 0.0456
+      },
+      {
+        "feature": "location_id_LOC005",
+        "importance": 0.0192
+      },
+      {
+        "feature": "nearby_event",
+        "importance": 0.0102
+      },
+      {
+        "feature": "temperature_c",
+        "importance": 0.0092
+      },
+      {
+        "feature": "is_holiday",
+        "importance": 0.005
+      },
+      {
+        "feature": "location_id_LOC002",
+        "importance": 0.005
+      },
+      {
+        "feature": "weather_condition_Rainy",
+        "importance": 0.0014
+      },
+      {
+        "feature": "minute",
+        "importance": 0.0008
+      },
+      {
+        "feature": "weather_condition_Sunny",
+        "importance": 0.0005
+      },
+      {
+        "feature": "weather_condition_Cloudy",
+        "importance": 0.0004
+      },
+      {
+        "feature": "weather_condition_Overcast",
+        "importance": 0.0002
+      }
+    ],
+    "Decision Tree": [
+      {
+        "feature": "location_id_LOC004",
+        "importance": 0.4933
+      },
+      {
+        "feature": "hour",
+        "importance": 0.1712
+      },
+      {
+        "feature": "location_id_LOC003",
+        "importance": 0.1269
+      },
+      {
+        "feature": "day_of_week",
+        "importance": 0.0714
+      },
+      {
+        "feature": "is_peak_hour",
+        "importance": 0.048
+      },
+      {
+        "feature": "is_weekend",
+        "importance": 0.0451
+      },
+      {
+        "feature": "location_id_LOC005",
+        "importance": 0.0195
+      },
+      {
+        "feature": "nearby_event",
+        "importance": 0.0101
+      },
+      {
+        "feature": "is_holiday",
+        "importance": 0.0049
+      },
+      {
+        "feature": "location_id_LOC002",
+        "importance": 0.0044
+      },
+      {
+        "feature": "temperature_c",
+        "importance": 0.0033
+      },
+      {
+        "feature": "weather_condition_Rainy",
+        "importance": 0.0013
+      },
+      {
+        "feature": "weather_condition_Sunny",
+        "importance": 0.0002
+      },
+      {
+        "feature": "weather_condition_Cloudy",
+        "importance": 0.0002
+      },
+      {
+        "feature": "minute",
+        "importance": 0.0002
+      },
+      {
+        "feature": "weather_condition_Overcast",
+        "importance": 0.0001
+      }
+    ]
+  },
+  "sample_chart_data": [
+    {
+      "index": 1,
+      "timestamp": "2026-08-22 21:00:00",
+      "location": "University Campus North",
+      "actual": 4,
+      "linear_regression": 0.0,
+      "decision_tree": 7.2,
+      "random_forest": 8.6
+    },
+    {
+      "index": 2,
+      "timestamp": "2026-09-14 12:30:00",
+      "location": "Grand Central Mall",
+      "actual": 296,
+      "linear_regression": 303.3,
+      "decision_tree": 296.9,
+      "random_forest": 293.5
+    },
+    {
+      "index": 3,
+      "timestamp": "2026-09-17 08:30:00",
+      "location": "Grand Central Mall",
+      "actual": 174,
+      "linear_regression": 210.4,
+      "decision_tree": 179.7,
+      "random_forest": 186.4
+    },
+    {
+      "index": 4,
+      "timestamp": "2026-09-24 11:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 245,
+      "linear_regression": 187.3,
+      "decision_tree": 225.0,
+      "random_forest": 222.2
+    },
+    {
+      "index": 5,
+      "timestamp": "2026-10-01 02:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 118,
+      "linear_regression": 331.9,
+      "decision_tree": 120.6,
+      "random_forest": 107.5
+    },
+    {
+      "index": 6,
+      "timestamp": "2026-10-28 16:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 224,
+      "linear_regression": 190.3,
+      "decision_tree": 225.0,
+      "random_forest": 224.4
+    },
+    {
+      "index": 7,
+      "timestamp": "2026-09-25 23:30:00",
+      "location": "Airport Terminal 2",
+      "actual": 108,
+      "linear_regression": 376.1,
+      "decision_tree": 136.8,
+      "random_forest": 140.6
+    },
+    {
+      "index": 8,
+      "timestamp": "2026-08-23 01:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 14,
+      "linear_regression": 0.0,
+      "decision_tree": 20.7,
+      "random_forest": 20.7
+    },
+    {
+      "index": 9,
+      "timestamp": "2026-08-27 10:00:00",
+      "location": "Grand Central Mall",
+      "actual": 259,
+      "linear_regression": 208.5,
+      "decision_tree": 232.7,
+      "random_forest": 247.5
+    },
+    {
+      "index": 10,
+      "timestamp": "2026-09-12 19:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 52,
+      "linear_regression": 29.7,
+      "decision_tree": 21.0,
+      "random_forest": 19.7
+    },
+    {
+      "index": 11,
+      "timestamp": "2026-09-17 03:30:00",
+      "location": "Airport Terminal 2",
+      "actual": 103,
+      "linear_regression": 318.5,
+      "decision_tree": 133.2,
+      "random_forest": 115.2
+    },
+    {
+      "index": 12,
+      "timestamp": "2026-10-12 09:00:00",
+      "location": "Downtown Metro Hub",
+      "actual": 196,
+      "linear_regression": 207.9,
+      "decision_tree": 182.3,
+      "random_forest": 195.0
+    },
+    {
+      "index": 13,
+      "timestamp": "2026-10-07 18:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 224,
+      "linear_regression": 204.4,
+      "decision_tree": 200.5,
+      "random_forest": 196.9
+    },
+    {
+      "index": 14,
+      "timestamp": "2026-08-21 15:30:00",
+      "location": "University Campus North",
+      "actual": 126,
+      "linear_regression": 124.2,
+      "decision_tree": 113.8,
+      "random_forest": 116.0
+    },
+    {
+      "index": 15,
+      "timestamp": "2026-08-29 03:30:00",
+      "location": "University Campus North",
+      "actual": 44,
+      "linear_regression": 0.0,
+      "decision_tree": 51.7,
+      "random_forest": 59.4
+    },
+    {
+      "index": 16,
+      "timestamp": "2026-09-29 01:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 51,
+      "linear_regression": 28.4,
+      "decision_tree": 31.1,
+      "random_forest": 26.3
+    },
+    {
+      "index": 17,
+      "timestamp": "2026-10-30 04:00:00",
+      "location": "University Campus North",
+      "actual": 11,
+      "linear_regression": 21.2,
+      "decision_tree": 6.5,
+      "random_forest": 22.7
+    },
+    {
+      "index": 18,
+      "timestamp": "2026-09-01 12:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 244,
+      "linear_regression": 155.6,
+      "decision_tree": 225.0,
+      "random_forest": 226.2
+    },
+    {
+      "index": 19,
+      "timestamp": "2026-08-19 00:30:00",
+      "location": "Grand Central Mall",
+      "actual": 50,
+      "linear_regression": 116.7,
+      "decision_tree": 100.4,
+      "random_forest": 87.6
+    },
+    {
+      "index": 20,
+      "timestamp": "2026-10-22 21:00:00",
+      "location": "University Campus North",
+      "actual": 24,
+      "linear_regression": 34.3,
+      "decision_tree": 17.2,
+      "random_forest": 17.7
+    },
+    {
+      "index": 21,
+      "timestamp": "2026-10-22 08:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 490,
+      "linear_regression": 466.1,
+      "decision_tree": 490.0,
+      "random_forest": 489.8
+    },
+    {
+      "index": 22,
+      "timestamp": "2026-09-25 01:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 13,
+      "linear_regression": 28.5,
+      "decision_tree": 34.7,
+      "random_forest": 33.7
+    },
+    {
+      "index": 23,
+      "timestamp": "2026-10-03 20:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 259,
+      "linear_regression": 404.3,
+      "decision_tree": 260.8,
+      "random_forest": 267.5
+    },
+    {
+      "index": 24,
+      "timestamp": "2026-10-29 19:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 44,
+      "linear_regression": 87.7,
+      "decision_tree": 27.5,
+      "random_forest": 26.8
+    },
+    {
+      "index": 25,
+      "timestamp": "2026-10-21 17:00:00",
+      "location": "Grand Central Mall",
+      "actual": 252,
+      "linear_regression": 227.0,
+      "decision_tree": 272.1,
+      "random_forest": 266.5
+    },
+    {
+      "index": 26,
+      "timestamp": "2026-10-16 13:00:00",
+      "location": "Grand Central Mall",
+      "actual": 381,
+      "linear_regression": 368.0,
+      "decision_tree": 358.1,
+      "random_forest": 367.0
+    },
+    {
+      "index": 27,
+      "timestamp": "2026-08-14 11:30:00",
+      "location": "Airport Terminal 2",
+      "actual": 452,
+      "linear_regression": 361.6,
+      "decision_tree": 467.9,
+      "random_forest": 472.3
+    },
+    {
+      "index": 28,
+      "timestamp": "2026-09-24 20:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 82,
+      "linear_regression": 92.4,
+      "decision_tree": 27.5,
+      "random_forest": 25.6
+    },
+    {
+      "index": 29,
+      "timestamp": "2026-10-10 14:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 397,
+      "linear_regression": 428.7,
+      "decision_tree": 415.8,
+      "random_forest": 417.6
+    },
+    {
+      "index": 30,
+      "timestamp": "2026-08-16 22:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 17,
+      "linear_regression": 15.5,
+      "decision_tree": 21.0,
+      "random_forest": 21.7
+    },
+    {
+      "index": 31,
+      "timestamp": "2026-11-09 18:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 242,
+      "linear_regression": 189.1,
+      "decision_tree": 200.5,
+      "random_forest": 206.0
+    },
+    {
+      "index": 32,
+      "timestamp": "2026-10-28 21:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 97,
+      "linear_regression": 127.8,
+      "decision_tree": 123.8,
+      "random_forest": 123.2
+    },
+    {
+      "index": 33,
+      "timestamp": "2026-08-26 04:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 27,
+      "linear_regression": 37.2,
+      "decision_tree": 34.2,
+      "random_forest": 34.0
+    },
+    {
+      "index": 34,
+      "timestamp": "2026-10-13 18:00:00",
+      "location": "University Campus North",
+      "actual": 20,
+      "linear_regression": 53.6,
+      "decision_tree": 17.2,
+      "random_forest": 13.8
+    },
+    {
+      "index": 35,
+      "timestamp": "2026-09-27 08:30:00",
+      "location": "Airport Terminal 2",
+      "actual": 455,
+      "linear_regression": 423.6,
+      "decision_tree": 490.0,
+      "random_forest": 487.4
+    },
+    {
+      "index": 36,
+      "timestamp": "2026-10-03 10:00:00",
+      "location": "Downtown Metro Hub",
+      "actual": 82,
+      "linear_regression": 147.9,
+      "decision_tree": 100.2,
+      "random_forest": 97.9
+    },
+    {
+      "index": 37,
+      "timestamp": "2026-08-26 05:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 490,
+      "linear_regression": 459.7,
+      "decision_tree": 490.0,
+      "random_forest": 489.9
+    },
+    {
+      "index": 38,
+      "timestamp": "2026-10-24 02:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 61,
+      "linear_regression": 40.3,
+      "decision_tree": 58.4,
+      "random_forest": 60.1
+    },
+    {
+      "index": 39,
+      "timestamp": "2026-08-17 21:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 490,
+      "linear_regression": 415.3,
+      "decision_tree": 489.3,
+      "random_forest": 481.4
+    },
+    {
+      "index": 40,
+      "timestamp": "2026-10-12 09:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 253,
+      "linear_regression": 185.1,
+      "decision_tree": 225.0,
+      "random_forest": 215.9
+    },
+    {
+      "index": 41,
+      "timestamp": "2026-08-31 23:00:00",
+      "location": "Grand Central Mall",
+      "actual": 13,
+      "linear_regression": 184.7,
+      "decision_tree": 11.5,
+      "random_forest": 26.1
+    },
+    {
+      "index": 42,
+      "timestamp": "2026-10-11 15:30:00",
+      "location": "Grand Central Mall",
+      "actual": 334,
+      "linear_regression": 209.4,
+      "decision_tree": 382.8,
+      "random_forest": 383.1
+    },
+    {
+      "index": 43,
+      "timestamp": "2026-10-22 12:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 484,
+      "linear_regression": 417.1,
+      "decision_tree": 473.9,
+      "random_forest": 470.5
+    },
+    {
+      "index": 44,
+      "timestamp": "2026-10-05 01:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 170,
+      "linear_regression": 322.2,
+      "decision_tree": 145.3,
+      "random_forest": 138.5
+    },
+    {
+      "index": 45,
+      "timestamp": "2026-09-29 10:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 153,
+      "linear_regression": 118.8,
+      "decision_tree": 160.8,
+      "random_forest": 161.5
+    },
+    {
+      "index": 46,
+      "timestamp": "2026-11-02 19:00:00",
+      "location": "Grand Central Mall",
+      "actual": 292,
+      "linear_regression": 312.1,
+      "decision_tree": 296.9,
+      "random_forest": 291.8
+    },
+    {
+      "index": 47,
+      "timestamp": "2026-09-08 00:00:00",
+      "location": "University Campus North",
+      "actual": 25,
+      "linear_regression": 0.0,
+      "decision_tree": 14.5,
+      "random_forest": 16.6
+    },
+    {
+      "index": 48,
+      "timestamp": "2026-10-21 08:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 126,
+      "linear_regression": 104.9,
+      "decision_tree": 127.4,
+      "random_forest": 125.5
+    },
+    {
+      "index": 49,
+      "timestamp": "2026-11-03 00:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 143,
+      "linear_regression": 326.5,
+      "decision_tree": 145.3,
+      "random_forest": 153.2
+    },
+    {
+      "index": 50,
+      "timestamp": "2026-10-26 03:00:00",
+      "location": "Grand Central Mall",
+      "actual": 83,
+      "linear_regression": 167.2,
+      "decision_tree": 44.1,
+      "random_forest": 54.3
+    },
+    {
+      "index": 51,
+      "timestamp": "2026-10-05 07:30:00",
+      "location": "Grand Central Mall",
+      "actual": 314,
+      "linear_regression": 214.1,
+      "decision_tree": 209.2,
+      "random_forest": 223.8
+    },
+    {
+      "index": 52,
+      "timestamp": "2026-10-15 03:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 180,
+      "linear_regression": 333.8,
+      "decision_tree": 120.6,
+      "random_forest": 119.6
+    },
+    {
+      "index": 53,
+      "timestamp": "2026-10-15 05:00:00",
+      "location": "University Campus North",
+      "actual": 4,
+      "linear_regression": 0.8,
+      "decision_tree": 9.2,
+      "random_forest": 6.9
+    },
+    {
+      "index": 54,
+      "timestamp": "2026-09-26 04:00:00",
+      "location": "Downtown Metro Hub",
+      "actual": 70,
+      "linear_regression": 93.1,
+      "decision_tree": 137.0,
+      "random_forest": 94.0
+    },
+    {
+      "index": 55,
+      "timestamp": "2026-08-14 00:30:00",
+      "location": "University Campus North",
+      "actual": 5,
+      "linear_regression": 0.0,
+      "decision_tree": 9.2,
+      "random_forest": 14.3
+    },
+    {
+      "index": 56,
+      "timestamp": "2026-09-11 05:30:00",
+      "location": "Grand Central Mall",
+      "actual": 60,
+      "linear_regression": 171.7,
+      "decision_tree": 46.7,
+      "random_forest": 53.3
+    },
+    {
+      "index": 57,
+      "timestamp": "2026-11-06 10:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 169,
+      "linear_regression": 143.9,
+      "decision_tree": 160.8,
+      "random_forest": 160.0
+    },
+    {
+      "index": 58,
+      "timestamp": "2026-09-17 17:00:00",
+      "location": "Grand Central Mall",
+      "actual": 175,
+      "linear_regression": 222.4,
+      "decision_tree": 236.5,
+      "random_forest": 235.0
+    },
+    {
+      "index": 59,
+      "timestamp": "2026-09-21 05:00:00",
+      "location": "University Campus North",
+      "actual": 19,
+      "linear_regression": 8.1,
+      "decision_tree": 16.9,
+      "random_forest": 18.2
+    },
+    {
+      "index": 60,
+      "timestamp": "2026-10-09 22:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 24,
+      "linear_regression": 93.8,
+      "decision_tree": 21.0,
+      "random_forest": 24.9
+    },
+    {
+      "index": 61,
+      "timestamp": "2026-10-11 03:30:00",
+      "location": "Airport Terminal 2",
+      "actual": 420,
+      "linear_regression": 315.3,
+      "decision_tree": 380.4,
+      "random_forest": 378.5
+    },
+    {
+      "index": 62,
+      "timestamp": "2026-09-26 08:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 45,
+      "linear_regression": 45.6,
+      "decision_tree": 46.2,
+      "random_forest": 32.6
+    },
+    {
+      "index": 63,
+      "timestamp": "2026-09-02 13:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 241,
+      "linear_regression": 153.9,
+      "decision_tree": 225.0,
+      "random_forest": 226.0
+    },
+    {
+      "index": 64,
+      "timestamp": "2026-10-27 16:30:00",
+      "location": "Grand Central Mall",
+      "actual": 282,
+      "linear_regression": 238.0,
+      "decision_tree": 272.1,
+      "random_forest": 273.0
+    },
+    {
+      "index": 65,
+      "timestamp": "2026-08-12 08:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 17,
+      "linear_regression": 56.5,
+      "decision_tree": 17.1,
+      "random_forest": 21.7
+    },
+    {
+      "index": 66,
+      "timestamp": "2026-10-19 00:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 52,
+      "linear_regression": 56.8,
+      "decision_tree": 34.7,
+      "random_forest": 31.7
+    },
+    {
+      "index": 67,
+      "timestamp": "2026-10-21 22:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 38,
+      "linear_regression": 99.9,
+      "decision_tree": 27.5,
+      "random_forest": 27.1
+    },
+    {
+      "index": 68,
+      "timestamp": "2026-11-05 02:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 23,
+      "linear_regression": 45.2,
+      "decision_tree": 31.1,
+      "random_forest": 31.9
+    },
+    {
+      "index": 69,
+      "timestamp": "2026-10-15 22:00:00",
+      "location": "Grand Central Mall",
+      "actual": 211,
+      "linear_regression": 227.8,
+      "decision_tree": 182.7,
+      "random_forest": 176.5
+    },
+    {
+      "index": 70,
+      "timestamp": "2026-09-18 19:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 193,
+      "linear_regression": 167.9,
+      "decision_tree": 200.5,
+      "random_forest": 200.0
+    },
+    {
+      "index": 71,
+      "timestamp": "2026-10-12 20:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 6,
+      "linear_regression": 97.3,
+      "decision_tree": 27.5,
+      "random_forest": 21.4
+    },
+    {
+      "index": 72,
+      "timestamp": "2026-08-22 09:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 425,
+      "linear_regression": 307.5,
+      "decision_tree": 395.2,
+      "random_forest": 381.4
+    },
+    {
+      "index": 73,
+      "timestamp": "2026-11-04 21:00:00",
+      "location": "Downtown Metro Hub",
+      "actual": 123,
+      "linear_regression": 120.3,
+      "decision_tree": 123.8,
+      "random_forest": 117.4
+    },
+    {
+      "index": 74,
+      "timestamp": "2026-08-14 03:30:00",
+      "location": "Airport Terminal 2",
+      "actual": 113,
+      "linear_regression": 294.9,
+      "decision_tree": 149.6,
+      "random_forest": 143.3
+    },
+    {
+      "index": 75,
+      "timestamp": "2026-11-06 06:00:00",
+      "location": "Tech Park Plaza",
+      "actual": 110,
+      "linear_regression": 65.9,
+      "decision_tree": 127.4,
+      "random_forest": 127.7
+    },
+    {
+      "index": 76,
+      "timestamp": "2026-10-29 18:30:00",
+      "location": "Airport Terminal 2",
+      "actual": 490,
+      "linear_regression": 436.6,
+      "decision_tree": 487.0,
+      "random_forest": 483.4
+    },
+    {
+      "index": 77,
+      "timestamp": "2026-09-06 05:00:00",
+      "location": "University Campus North",
+      "actual": 11,
+      "linear_regression": 0.0,
+      "decision_tree": 21.6,
+      "random_forest": 21.6
+    },
+    {
+      "index": 78,
+      "timestamp": "2026-10-25 21:30:00",
+      "location": "Tech Park Plaza",
+      "actual": 15,
+      "linear_regression": 51.8,
+      "decision_tree": 21.0,
+      "random_forest": 17.8
+    },
+    {
+      "index": 79,
+      "timestamp": "2026-09-14 05:30:00",
+      "location": "Downtown Metro Hub",
+      "actual": 33,
+      "linear_regression": 53.4,
+      "decision_tree": 40.6,
+      "random_forest": 43.6
+    },
+    {
+      "index": 80,
+      "timestamp": "2026-09-01 19:00:00",
+      "location": "Airport Terminal 2",
+      "actual": 490,
+      "linear_regression": 439.5,
+      "decision_tree": 489.3,
+      "random_forest": 489.7
+    }
+  ],
+  "residual_distribution": [
+    {
+      "bin": "-127.4 to -103.9",
+      "count": 6
+    },
+    {
+      "bin": "-103.9 to -80.4",
+      "count": 20
+    },
+    {
+      "bin": "-80.4 to -56.9",
+      "count": 71
+    },
+    {
+      "bin": "-56.9 to -33.3",
+      "count": 247
+    },
+    {
+      "bin": "-33.3 to -9.8",
+      "count": 1027
+    },
+    {
+      "bin": "-9.8 to 13.7",
+      "count": 1883
+    },
+    {
+      "bin": "13.7 to 37.2",
+      "count": 811
+    },
+    {
+      "bin": "37.2 to 60.7",
+      "count": 191
+    },
+    {
+      "bin": "60.7 to 84.3",
+      "count": 53
+    },
+    {
+      "bin": "84.3 to 107.8",
+      "count": 11
+    }
+  ]
+}

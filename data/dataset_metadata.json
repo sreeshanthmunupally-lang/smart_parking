@@ -1,0 +1,112 @@
+{
+  "dataset_name": "SmartPark AI Historical Sensor Logs",
+  "total_records": 21600,
+  "total_locations": 5,
+  "start_date": "2026-08-12 00:00:00",
+  "end_date": "2026-11-09 23:30:00",
+  "features": [
+    "location_id",
+    "day_of_week",
+    "hour",
+    "minute",
+    "is_weekend",
+    "is_holiday",
+    "temperature_c",
+    "weather_condition",
+    "is_peak_hour",
+    "nearby_event"
+  ],
+  "target": "occupied_spaces",
+  "locations": [
+    {
+      "location_id": "LOC001",
+      "location_name": "Downtown Metro Hub",
+      "capacity": 250,
+      "type": "Transit / Commuter",
+      "base_rate": 0.35,
+      "weekday_peak_hours": [
+        7,
+        8,
+        9,
+        17,
+        18,
+        19
+      ],
+      "weekend_factor": 0.45,
+      "volatility": 0.08
+    },
+    {
+      "location_id": "LOC002",
+      "location_name": "Tech Park Plaza",
+      "capacity": 320,
+      "type": "Commercial / IT Office",
+      "base_rate": 0.25,
+      "weekday_peak_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "weekend_factor": 0.2,
+      "volatility": 0.06
+    },
+    {
+      "location_id": "LOC003",
+      "location_name": "Grand Central Mall",
+      "capacity": 400,
+      "type": "Retail & Entertainment",
+      "base_rate": 0.3,
+      "weekday_peak_hours": [
+        12,
+        13,
+        18,
+        19,
+        20
+      ],
+      "weekend_factor": 1.4,
+      "volatility": 0.09
+    },
+    {
+      "location_id": "LOC004",
+      "location_name": "Airport Terminal 2",
+      "capacity": 500,
+      "type": "Travel & Transportation",
+      "base_rate": 0.65,
+      "weekday_peak_hours": [
+        5,
+        6,
+        7,
+        8,
+        18,
+        19,
+        20,
+        21
+      ],
+      "weekend_factor": 1.05,
+      "volatility": 0.07
+    },
+    {
+      "location_id": "LOC005",
+      "location_name": "University Campus North",
+      "capacity": 180,
+      "type": "Academic & Research",
+      "base_rate": 0.2,
+      "weekday_peak_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "weekend_factor": 0.15,
+      "volatility": 0.08
+    }
+  ]
+}

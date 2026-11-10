@@ -67,3 +67,4 @@ def get_model_comparison_table():
         "best_model": metrics.get("best_model_name"),
         "table": comparison_table
     }
+

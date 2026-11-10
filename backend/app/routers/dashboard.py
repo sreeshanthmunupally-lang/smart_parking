@@ -113,3 +113,4 @@ def get_dashboard_summary(db: Session = Depends(get_db)):
         simulation_mode=True,
         model_status=model_status
     )
+

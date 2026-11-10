@@ -81,3 +81,4 @@ def health_check():
         "models_loaded": list(ml_service.models.keys()) if ml_service.is_ready else [],
         "best_model": ml_service.metrics_data.get("best_model_name") if ml_service.metrics_data else None
     }
+

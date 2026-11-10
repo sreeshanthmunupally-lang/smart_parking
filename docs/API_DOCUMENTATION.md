@@ -174,3 +174,4 @@ Returns 24-hour diurnal curves, day-of-week averages, cross-garage comparison, a
 
 ### `GET /api/about`
 Returns problem statement, objectives, feature dictionary, and architecture breakdown.
+

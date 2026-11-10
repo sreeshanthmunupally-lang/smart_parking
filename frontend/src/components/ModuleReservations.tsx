@@ -478,3 +478,4 @@ export const ModuleReservations: React.FC<ModuleReservationsProps> = ({
     </div>
   );
 };
+

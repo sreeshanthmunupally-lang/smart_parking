@@ -256,3 +256,4 @@ export const ModuleAnalytics: React.FC = () => {
     </div>
   );
 };
+

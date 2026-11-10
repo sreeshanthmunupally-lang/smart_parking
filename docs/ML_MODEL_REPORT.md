@@ -59,3 +59,4 @@ Evaluated via Gini impurity reduction:
 - `best_model.joblib` (Copy of Random Forest for production inference)
 - `preprocessor.joblib` (Fitted ColumnTransformer)
 - `model_metrics.json` (Authentic evaluation JSON file consumed by frontend & APIs)
+

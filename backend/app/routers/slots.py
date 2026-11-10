@@ -86,3 +86,4 @@ def get_single_slot(slot_id: int, db: Session = Depends(get_db)):
         last_status_change=slot.last_status_change,
         current_reservation=curr_res
     )
+

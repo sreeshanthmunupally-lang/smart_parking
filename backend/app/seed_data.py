@@ -171,3 +171,4 @@ def seed_database(db: Session):
             db.add(log)
     db.commit()
     print("Database seeding completed.")
+

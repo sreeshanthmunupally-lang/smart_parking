@@ -137,3 +137,4 @@ export async function fetchAboutProject(): Promise<any> {
   const res = await fetch(`${API_BASE}/about`);
   return handleResponse(res);
 }
+

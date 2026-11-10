@@ -344,3 +344,4 @@ export const ModuleDashboard: React.FC<ModuleDashboardProps> = ({
     </div>
   );
 };
+

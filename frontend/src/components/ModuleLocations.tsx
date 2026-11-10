@@ -186,3 +186,4 @@ export const ModuleLocations: React.FC<ModuleLocationsProps> = ({
     </div>
   );
 };
+

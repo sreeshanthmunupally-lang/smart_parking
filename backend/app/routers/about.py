@@ -78,3 +78,4 @@ def get_about_project_info():
             "PWA mobile companion app with turn-by-turn navigation directly to the reserved slot."
         ]
     }
+

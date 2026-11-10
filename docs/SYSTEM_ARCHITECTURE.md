@@ -66,3 +66,4 @@
 - `parking_slots`: Individual bay numbers, floor levels, zones, bay classifications (Standard, EV, Accessible, VIP), current statuses (Available, Occupied, Reserved).
 - `reservations`: Active and historical reservation records, customer name, license plate, reservation codes, start/end timestamps.
 - `telemetry_logs`: Historical aggregate snapshots recording occupancy percentages and demand classifications.
+

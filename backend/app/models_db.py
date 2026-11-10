@@ -67,3 +67,4 @@ class TelemetryLog(Base):
     available_spaces = Column(Integer, nullable=False)
     occupancy_percentage = Column(Float, nullable=False)
     demand_level = Column(String(20), default="Low")
+

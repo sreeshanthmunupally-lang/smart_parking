@@ -83,3 +83,4 @@ This guide walks through each functional module for academic presentations and d
 ### Module 8: About Project
 1. Navigate to the **About Project** tab.
 2. Review problem statement, mathematical principles, dataset schema, and future IoT/ANPR roadmap.
+

@@ -143,3 +143,4 @@ def cancel_reservation(reservation_id: int, db: Session = Depends(get_db)):
         status=reservation.status,
         created_at=reservation.created_at
     )
+

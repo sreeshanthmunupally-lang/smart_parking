@@ -213,3 +213,4 @@ def generate_parking_dataset(output_path: str = "data/smart_parking_dataset.csv"
 
 if __name__ == "__main__":
     generate_parking_dataset()
+

@@ -78,3 +78,4 @@ def reset_simulation(location_id: Optional[str] = None, db: Session = Depends(ge
         updated_slots_count=count,
         simulation_label="SIMULATION ONLY: Real-time sensor emulation"
     )
+

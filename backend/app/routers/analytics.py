@@ -102,3 +102,4 @@ def get_analytics_summary(db: Session = Depends(get_db)):
         "actual_vs_predicted": sample_chart,
         "models_summary": metrics.get("models", {})
     }
+

@@ -87,3 +87,4 @@ def get_location_details(location_id: str, db: Session = Depends(get_db)):
         latitude=loc.latitude,
         longitude=loc.longitude
     )
+

@@ -113,7 +113,97 @@ export interface ReservationItem {
   email?: string;
   start_time: string;
   end_time?: string;
-  status: "Active" | "Cancelled" | "Completed";
+  status: "CONFIRMED" | "CANCELLED" | "COMPLETED" | "EXPIRED" | string;
+  created_at: string;
+}
+
+// Public Reservation Types
+export interface PublicReservationPayload {
+  location_id: string;
+  slot_id: number;
+  customer_name: string;
+  customer_phone: string;
+  customer_email?: string;
+  vehicle_number: string;
+  arrival_date: string;
+  arrival_time: string;
+  duration_hours: number;
+}
+
+export interface PublicReservation {
+  booking_reference: string;
+  customer_name: string;
+  customer_phone_masked: string;
+  vehicle_number: string;
+  location_id: string;
+  location_name: string;
+  slot_id: number;
+  slot_number: string;
+  floor: string;
+  zone: string;
+  slot_type: string;
+  arrival_time: string;
+  end_time: string;
+  duration_hours: number;
+  status: "CONFIRMED" | "CANCELLED" | "COMPLETED" | "EXPIRED";
+  total_price: number;
+  created_at: string;
+  can_cancel: boolean;
+}
+
+// Administrator Types
+export interface AdminUser {
+  id: number;
+  username: string;
+  full_name: string;
+  role: string;
+}
+
+export interface AdminStats {
+  total_reservations: number;
+  confirmed_reservations: number;
+  cancelled_reservations: number;
+  upcoming_reservations: number;
+  completed_reservations: number;
+  total_customers: number;
+  total_locations: number;
+  current_reserved_slots: number;
+  period: string;
+  start_date?: string;
+  end_date?: string;
+}
+
+export interface AdminReservation {
+  id: number;
+  booking_reference: string;
+  customer_name: string;
+  customer_phone: string;
+  customer_email?: string;
+  vehicle_number: string;
+  location_id: string;
+  location_name: string;
+  slot_id: number;
+  slot_number: string;
+  arrival_time: string;
+  end_time: string;
+  duration_hours: number;
+  status: "CONFIRMED" | "CANCELLED" | "COMPLETED" | "EXPIRED";
+  total_price: number;
+  cancellation_reason?: string;
+  created_at: string;
+}
+
+export interface AdminNotification {
+  id: number;
+  title: string;
+  message: string;
+  reservation_id?: number;
+  booking_reference?: string;
+  customer_name?: string;
+  location_name?: string;
+  slot_number?: string;
+  arrival_time?: string;
+  is_read: boolean;
   created_at: string;
 }
 

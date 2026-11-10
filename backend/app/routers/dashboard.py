@@ -14,7 +14,7 @@ router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
 def get_dashboard_summary(db: Session = Depends(get_db)):
     locations = db.query(Location).all()
     slots = db.query(ParkingSlot).all()
-    active_reservations = db.query(Reservation).filter(Reservation.status == "Active").count()
+    active_reservations = db.query(Reservation).filter(Reservation.status.in_(["CONFIRMED", "Active"])).count()
 
     total_capacity = sum(loc.capacity for loc in locations)
     

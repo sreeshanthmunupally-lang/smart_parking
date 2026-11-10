@@ -8,10 +8,16 @@ class PredictionRequest(BaseModel):
     location_id: str = Field(..., example="LOC001")
     date: str = Field(..., example="2026-11-15") # YYYY-MM-DD
     time: str = Field(..., example="14:30") # HH:MM
-    model_name: Optional[str] = Field("Best Model", example="Best Model") # "Best Model", "Linear Regression", "Decision Tree", "Random Forest"
+    model_name: Optional[str] = Field("Best Model", example="Best Model")
     temperature_c: Optional[float] = Field(None, example=24.5)
     weather_condition: Optional[str] = Field("Clear", example="Clear")
     nearby_event: Optional[bool] = Field(False, example=False)
+
+class SimplifiedPredictionRequest(BaseModel):
+    model_config = {"protected_namespaces": ()}
+    location_id: str = Field(..., example="LOC001")
+    date: str = Field(..., example="2026-11-15") # YYYY-MM-DD
+    time: str = Field(..., example="14:30") # HH:MM
 
 class SingleModelPrediction(BaseModel):
     model_config = {"protected_namespaces": ()}
@@ -51,7 +57,7 @@ class ReservationInfo(BaseModel):
     customer_name: str
     vehicle_number: str
     start_time: datetime
-    end_time: Optional[datetime]
+    end_time: Optional[datetime] = None
     status: str
 
 class SlotResponse(BaseModel):
@@ -64,6 +70,20 @@ class SlotResponse(BaseModel):
     status: str
     last_status_change: datetime
     current_reservation: Optional[ReservationInfo] = None
+
+    class Config:
+        from_attributes = True
+
+# Public Slot View — Hides Customer Private Telemetry
+class PublicSlotResponse(BaseModel):
+    id: int
+    location_id: str
+    slot_number: str
+    floor: str
+    zone: str
+    slot_type: str
+    status: str # Available, Occupied, Reserved
+    last_status_change: datetime
 
     class Config:
         from_attributes = True
@@ -83,7 +103,7 @@ class LocationResponse(BaseModel):
     latitude: Optional[float] = None
     longitude: Optional[float] = None
 
-# Reservation Schemas
+# Legacy Reservation Simulation Schemas
 class ReservationCreate(BaseModel):
     slot_id: int
     location_id: str
@@ -112,16 +132,118 @@ class ReservationResponse(BaseModel):
     class Config:
         from_attributes = True
 
-# Simulation Schemas
-class SimulationTickRequest(BaseModel):
-    location_id: Optional[str] = None
-    num_events: Optional[int] = 3
+# Public Customer Reservation Schemas
+class PublicReservationCreate(BaseModel):
+    location_id: str = Field(..., example="LOC001")
+    slot_id: int = Field(..., example=12)
+    customer_name: str = Field(..., min_length=2, max_length=100)
+    customer_phone: str = Field(..., min_length=6, max_length=30)
+    customer_email: Optional[str] = None
+    vehicle_number: str = Field(..., min_length=2, max_length=30)
+    arrival_date: str = Field(..., example="2026-11-15") # YYYY-MM-DD
+    arrival_time: str = Field(..., example="14:30") # HH:MM
+    duration_hours: int = Field(2, ge=1, le=48)
 
-class SimulationResponse(BaseModel):
+class PublicReservationResponse(BaseModel):
+    booking_reference: str
+    customer_name: str
+    customer_phone_masked: str
+    vehicle_number: str
+    location_id: str
+    location_name: str
+    slot_id: int
+    slot_number: str
+    floor: str
+    zone: str
+    slot_type: str
+    arrival_time: datetime
+    end_time: datetime
+    duration_hours: int
+    status: str # CONFIRMED, CANCELLED, COMPLETED, EXPIRED
+    total_price: float
+    created_at: datetime
+    can_cancel: bool
+
+class PublicLookupRequest(BaseModel):
+    booking_reference: str = Field(..., example="SPK-20261110-4891")
+    phone_number: str = Field(..., example="555-0199")
+
+class PublicCancelRequest(BaseModel):
+    booking_reference: str = Field(..., example="SPK-20261110-4891")
+    phone_number: str = Field(..., example="555-0199")
+    reason: Optional[str] = "Customer self-cancellation"
+
+# Administrator Authentication Schemas
+class AdminLoginRequest(BaseModel):
+    username: str
+    password: str
+
+class AdminProfile(BaseModel):
+    id: int
+    username: str
+    full_name: str
+    role: str
+
+class AdminLoginResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    admin: AdminProfile
+
+# Administrator Statistics & Management Schemas
+class AdminStatsResponse(BaseModel):
+    total_reservations: int
+    confirmed_reservations: int
+    cancelled_reservations: int
+    upcoming_reservations: int
+    completed_reservations: int
+    total_customers: int
+    total_locations: int
+    current_reserved_slots: int
+    period: str
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+
+class AdminReservationItem(BaseModel):
+    id: int
+    booking_reference: str
+    customer_name: str
+    customer_phone: str
+    customer_email: Optional[str] = None
+    vehicle_number: str
+    location_id: str
+    location_name: str
+    slot_id: int
+    slot_number: str
+    arrival_time: datetime
+    end_time: datetime
+    duration_hours: int
     status: str
+    total_price: float
+    cancellation_reason: Optional[str] = None
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+class AdminStatusUpdateRequest(BaseModel):
+    status: str = Field(..., example="CANCELLED") # CONFIRMED, CANCELLED, COMPLETED, EXPIRED
+    reason: Optional[str] = None
+
+class AdminNotificationResponse(BaseModel):
+    id: int
+    title: str
     message: str
-    updated_slots_count: int
-    simulation_label: str = "SIMULATION ONLY: Real-time sensor emulation"
+    reservation_id: Optional[int] = None
+    booking_reference: Optional[str] = None
+    customer_name: Optional[str] = None
+    location_name: Optional[str] = None
+    slot_number: Optional[str] = None
+    arrival_time: Optional[datetime] = None
+    is_read: bool
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
 
 # Dashboard & Analytics Schemas
 class HourlyTrend(BaseModel):
@@ -155,3 +277,14 @@ class ModelMetricsResponse(BaseModel):
     residual_distribution: List[Dict[str, Any]]
     missing_files: Optional[List[str]] = None
     message: Optional[str] = None
+
+# Simulation Schemas
+class SimulationTickRequest(BaseModel):
+    location_id: Optional[str] = None
+    num_events: Optional[int] = 3
+
+class SimulationResponse(BaseModel):
+    status: str
+    message: str
+    updated_slots_count: int
+    simulation_label: str = "SIMULATION ONLY: Real-time sensor emulation"

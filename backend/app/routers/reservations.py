@@ -31,8 +31,8 @@ def get_all_reservations(db: Session = Depends(get_db)):
                 location_name=loc_name,
                 customer_name=r.customer_name,
                 vehicle_number=r.vehicle_number,
-                phone=r.phone,
-                email=r.email,
+                phone=r.customer_phone,
+                email=r.customer_email,
                 start_time=r.start_time,
                 end_time=r.end_time,
                 status=r.status,
@@ -71,11 +71,12 @@ def create_reservation(payload: ReservationCreate, db: Session = Depends(get_db)
         location_id=slot.location_id,
         customer_name=payload.customer_name.strip(),
         vehicle_number=payload.vehicle_number.strip().upper(),
-        phone=payload.phone,
-        email=payload.email,
+        customer_phone=payload.phone or "+1-555-0100",
+        customer_email=payload.email,
         start_time=now,
+        duration_hours=duration,
         end_time=end_time,
-        status="Active"
+        status="CONFIRMED"
     )
     db.add(reservation)
 
@@ -95,8 +96,8 @@ def create_reservation(payload: ReservationCreate, db: Session = Depends(get_db)
         location_name=loc.name,
         customer_name=reservation.customer_name,
         vehicle_number=reservation.vehicle_number,
-        phone=reservation.phone,
-        email=reservation.email,
+        phone=reservation.customer_phone,
+        email=reservation.customer_email,
         start_time=reservation.start_time,
         end_time=reservation.end_time,
         status=reservation.status,
@@ -109,10 +110,10 @@ def cancel_reservation(reservation_id: int, db: Session = Depends(get_db)):
     if not reservation:
         raise HTTPException(status_code=404, detail="Reservation not found.")
 
-    if reservation.status == "Cancelled":
+    if reservation.status == "CANCELLED":
         raise HTTPException(status_code=400, detail="Reservation is already cancelled.")
 
-    reservation.status = "Cancelled"
+    reservation.status = "CANCELLED"
     
     # Revert slot status to Available
     slot = db.query(ParkingSlot).filter(ParkingSlot.id == reservation.slot_id).first()
@@ -136,8 +137,8 @@ def cancel_reservation(reservation_id: int, db: Session = Depends(get_db)):
         location_name=loc_name,
         customer_name=reservation.customer_name,
         vehicle_number=reservation.vehicle_number,
-        phone=reservation.phone,
-        email=reservation.email,
+        phone=reservation.customer_phone,
+        email=reservation.customer_email,
         start_time=reservation.start_time,
         end_time=reservation.end_time,
         status=reservation.status,

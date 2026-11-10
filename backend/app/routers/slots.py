@@ -23,7 +23,7 @@ def get_slots_by_location(location_id: str, db: Session = Depends(get_db)):
         if s.status == "Reserved":
             res = db.query(Reservation).filter(
                 Reservation.slot_id == s.id,
-                Reservation.status == "Active"
+                Reservation.status.in_(["CONFIRMED", "Active"])
             ).order_by(Reservation.created_at.desc()).first()
             if res:
                 curr_res = ReservationInfo(
@@ -62,7 +62,7 @@ def get_single_slot(slot_id: int, db: Session = Depends(get_db)):
     if slot.status == "Reserved":
         res = db.query(Reservation).filter(
             Reservation.slot_id == slot.id,
-            Reservation.status == "Active"
+            Reservation.status.in_(["CONFIRMED", "Active"])
         ).order_by(Reservation.created_at.desc()).first()
         if res:
             curr_res = ReservationInfo(

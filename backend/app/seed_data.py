@@ -124,16 +124,18 @@ def seed_database(db: Session):
         start = datetime.utcnow() - timedelta(minutes=random.randint(10, 45))
         end = start + timedelta(hours=2)
         res = Reservation(
-            reservation_code=f"SP-{random.randint(100000, 999999)}",
+            reservation_code=f"SPK-SEED-{random.randint(1000, 9999)}",
             slot_id=slot.id,
             location_id=slot.location_id,
             customer_name=cust["name"],
+            customer_phone=cust["phone"],
+            customer_email=cust["email"],
             vehicle_number=cust["plate"],
-            phone=cust["phone"],
-            email=cust["email"],
             start_time=start,
+            duration_hours=2,
             end_time=end,
-            status="Active"
+            status="CONFIRMED",
+            total_price=7.00
         )
         db.add(res)
     db.commit()

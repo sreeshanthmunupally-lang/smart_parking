@@ -120,7 +120,7 @@ export const ModulePrediction: React.FC<ModulePredictionProps> = ({
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5 text-blue-400" />
-                    Target Date
+                    Target Date *
                   </label>
                   <input
                     type="date"
@@ -134,7 +134,7 @@ export const ModulePrediction: React.FC<ModulePredictionProps> = ({
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-blue-400" />
-                    Expected Time
+                    Expected Arrival Time *
                   </label>
                   <input
                     type="time"
@@ -146,80 +146,15 @@ export const ModulePrediction: React.FC<ModulePredictionProps> = ({
                 </div>
               </div>
 
-              {/* Algorithm Selection */}
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              {/* Automated ML Feature Calibration Note */}
+              <div className="p-3.5 rounded-2xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400 space-y-1">
+                <div className="flex items-center gap-1.5 text-slate-300 font-semibold text-[11px] uppercase tracking-wider">
                   <Cpu className="w-3.5 h-3.5 text-emerald-400" />
-                  Model Selection
-                </label>
-                <select
-                  value={modelName}
-                  onChange={(e) => setModelName(e.target.value)}
-                  className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
-                >
-                  <option value="Best Model">Best Model: Random Forest (R² = 0.973, Lowest RMSE)</option>
-                  <option value="Random Forest">Random Forest Regressor (100 Trees)</option>
-                  <option value="Decision Tree">Decision Tree Regressor (Depth 12)</option>
-                  <option value="Linear Regression">Linear Regression (OLS Baseline)</option>
-                </select>
-                <p className="mt-1 text-[11px] text-slate-400">
-                  Selects the best-performing model automatically according to holdout test set metrics.
+                  <span>Automated Feature Pipeline</span>
+                </div>
+                <p className="text-[11px] leading-relaxed">
+                  Our production Random Forest Regressor automatically calculates diurnal curves, holiday calendars, and rush hour saturation under the hood.
                 </p>
-              </div>
-
-              {/* Weather & Temperature */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                    <CloudSun className="w-3.5 h-3.5 text-sky-400" />
-                    Weather Condition
-                  </label>
-                  <select
-                    value={weatherCondition}
-                    onChange={(e) => setWeatherCondition(e.target.value)}
-                    className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
-                  >
-                    <option value="Clear">Clear</option>
-                    <option value="Sunny">Sunny</option>
-                    <option value="Cloudy">Cloudy</option>
-                    <option value="Rainy">Rainy</option>
-                    <option value="Overcast">Overcast</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                    <Flame className="w-3.5 h-3.5 text-amber-400" />
-                    Temperature ({temperatureC}°C)
-                  </label>
-                  <input
-                    type="range"
-                    min="10"
-                    max="42"
-                    step="0.5"
-                    value={temperatureC}
-                    onChange={(e) => setTemperatureC(parseFloat(e.target.value))}
-                    className="w-full accent-blue-500 cursor-pointer mt-2"
-                  />
-                </div>
-              </div>
-
-              {/* Special Event Toggle */}
-              <div className="pt-2">
-                <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer hover:bg-slate-900 transition-colors">
-                  <input
-                    type="checkbox"
-                    checked={nearbyEvent}
-                    onChange={(e) => setNearbyEvent(e.target.checked)}
-                    className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 accent-blue-600"
-                  />
-                  <div>
-                    <span className="text-xs font-semibold text-white block">Nearby Special Event / Festival</span>
-                    <span className="text-[11px] text-slate-400 block">
-                      Accounts for sports matches, concerts, or holiday conventions.
-                    </span>
-                  </div>
-                </label>
               </div>
 
               {/* Submit Button */}

@@ -1,0 +1,21 @@
+{
+    "project": "SMARTPARK AI",
+    "model": "Linear Regression",
+    "MAE": 192.94971257166463,
+    "RMSE": 306.93082051691573,
+    "R2_Score": 0.7860317323147015,
+    "training_records": 28388,
+    "testing_records": 7113,
+    "supported_locations": 30,
+    "input_features": [
+        "SystemCodeNumber",
+        "Capacity",
+        "Hour",
+        "Minute",
+        "Day",
+        "Month",
+        "DayOfWeek",
+        "IsWeekend"
+    ],
+    "target": "Occupancy"
+}
